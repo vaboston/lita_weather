@@ -1,5 +1,5 @@
-require "lita_weather/version"
+require "lita"
 
-module LitaWeather
-  # Your code goes here...
-end
+Lita.load_locales Dir[File.expand_path(
+	  File.join("..", "..", "locales", "*.yml"), __FILE__
+)]
