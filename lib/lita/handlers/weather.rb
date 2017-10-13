@@ -6,11 +6,11 @@ module Lita
      # Chat routes
      ##
 
-        route(/^meteo?(\s+(?<city>.*))/, :get_meteo, help: { "meteo <city>" => "Get meteo for city"})
+        route(/^weather?(\s+(?<city>.*))/, :get_weather, help: { "weater <city>" => "Get weather for city"})
 	
-        def get_meteo(response)
-          api_key = '83cf96f95d89ec153a330ce1596d3d12'
-	  city = response.match_data[:city] || nil
+        def get_weather(response)
+          api_key = 'yourapikeyhere'
+	  city = response.match_data[:city] || 'Rennes'
           uri = URI("http://api.openweathermap.org/data/2.5/weather?q=#{city},fr&appid=#{api_key}")
 	  resp = Net::HTTP.get(uri) # => String
           weather_jsonyfied = JSON.parse(resp)
